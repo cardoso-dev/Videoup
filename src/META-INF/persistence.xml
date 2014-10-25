@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="VideoupPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.videoup.entities.VideoupItemsrnt</class>
+    <class>com.videoup.entities.VideoupCtofrentas</class>
+    <class>com.videoup.entities.VideoupRentas</class>
+    <class>com.videoup.entities.VideoupCustomers</class>
+    <class>com.videoup.entities.VideoupCatgs</class>
+    <class>com.videoup.entities.VideoupFormts</class>
+    <class>com.videoup.entities.VideoupTaxes</class>
+    <class>com.videoup.entities.VideoupGames</class>
+    <class>com.videoup.entities.VideoupCstmrnotes</class>
+    <class>com.videoup.entities.VideoupVentas</class>
+    <class>com.videoup.entities.VideoupItemsvnt</class>
+    <class>com.videoup.entities.VideoupConf</class>
+    <class>com.videoup.entities.VideoupBcodes</class>
+    <class>com.videoup.entities.VideoupAutrz</class>
+    <class>com.videoup.entities.VideoupPuntos</class>
+    <class>com.videoup.entities.VideoupMovies</class>
+    <class>com.videoup.entities.VideoupDocs</class>
+    <class>com.videoup.entities.VideoupCtprrentas</class>
+    <class>com.videoup.entities.VideoupLangs</class>
+    <class>com.videoup.entities.VideoupBcdlang</class>
+    <class>com.videoup.entities.VideoupTags</class>
+    <class>com.videoup.entities.VideoupTagitems</class>
+    <class>com.videoup.entities.VideoupGimgs</class>
+    <class>com.videoup.entities.VideoupCimgs</class>
+    <class>com.videoup.entities.VideoupMimgs</class>
+    <properties>
+      <property name="hibernate.connection.username" value="user"/>
+      <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.connection.password" value="password"/>
+      <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/videoup"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.show.sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>

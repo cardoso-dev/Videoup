@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato" pageWidth="612" pageHeight="792" columnWidth="488" leftMargin="62" rightMargin="62" topMargin="70" bottomMargin="59" uuid="82bbbde7-18fd-45f2-85da-851e55a12bd3">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="htmldocument" class="java.lang.String"/>
+	<detail>
+		<band height="201" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a2f61444-eb20-4bff-ad32-04987bfb02dc" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="488" height="201"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA[$P{htmldocument}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

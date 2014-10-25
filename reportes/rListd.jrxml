@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rListd" pageWidth="612" pageHeight="792" columnWidth="525" leftMargin="45" rightMargin="42" topMargin="39" bottomMargin="34" uuid="b167106d-46b4-43b4-a739-5b18d466f95f">
+	<property name="ireport.zoom" value="1.4641000000000046"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="vclub" class="java.lang.String"/>
+	<parameter name="dreport" class="java.lang.String"/>
+	<parameter name="col1" class="java.lang.String"/>
+	<parameter name="col2" class="java.lang.String"/>
+	<parameter name="col3" class="java.lang.String"/>
+	<parameter name="col4" class="java.lang.String"/>
+	<parameter name="col5" class="java.lang.String"/>
+	<field name="fld1" class="java.lang.String"/>
+	<field name="fld2" class="java.lang.String"/>
+	<field name="fld3" class="java.lang.String"/>
+	<field name="fld4" class="java.lang.String"/>
+	<field name="fld5" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement uuid="7fe39064-3aff-4c58-a2c6-bdcecbba674a" x="0" y="0" width="501" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="19" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vclub}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eb78a25a-a801-47d5-8da6-0575292b9a88" x="14" y="30" width="475" height="16"/>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dreport}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="18">
+			<line>
+				<reportElement uuid="605778e0-9c96-4672-84a9-5783d575bd4e" x="0" y="16" width="525" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="fe5c43c7-a54d-4861-abb1-b7b4719b8c59" x="0" y="0" width="76" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{col1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9670d1b8-c161-4438-8168-032ad4b7e1a5" x="76" y="0" width="177" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{col2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="784b0b36-3952-4d5b-985f-91ee29663dbb" x="253" y="0" width="80" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{col3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c8c53000-12dc-4183-8e04-0c2e03e84552" x="333" y="0" width="89" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{col4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="366bb2db-be01-4fa8-9e2b-def23c5b84ad" x="422" y="0" width="103" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{col5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement uuid="35c417f2-06c8-4219-b86e-b5d0ad152c14" x="76" y="0" width="1" height="17" forecolor="#282428"/>
+			</line>
+			<textField>
+				<reportElement uuid="8773c496-4e77-4d7b-80b0-50b0713aaab3" x="79" y="0" width="172" height="17"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fld2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b0d09d56-5aff-4b4e-aff9-241b1ef170ce" x="255" y="0" width="77" height="17"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fld3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e97a2928-493f-46be-a3ff-6a377ff5430e" x="335" y="0" width="76" height="17"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fld4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="115051b5-4cfd-4c07-b0eb-be522ad079b9" x="425" y="0" width="100" height="17"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fld5}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="ab9e70e7-0acc-483b-892b-7051f347f8df" x="253" y="0" width="1" height="17" forecolor="#282428"/>
+			</line>
+			<textField>
+				<reportElement uuid="685367e7-01d8-4d71-adba-f71d835b87f6" x="0" y="0" width="76" height="17"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fld1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="3022bf77-f600-48f2-aba7-1b3026635f9d" x="333" y="0" width="1" height="17" forecolor="#282428"/>
+			</line>
+			<line>
+				<reportElement uuid="2e631838-f704-47dd-a833-483c6c671230" x="421" y="0" width="1" height="17" forecolor="#282428"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2591fd65-417b-4c22-a1b4-5e65b1a6eb1b" x="0" y="5" width="110" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="05f370f7-6a97-427c-beb3-f91a326aa7e8" x="110" y="5" width="45" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="6b464b71-eee7-4188-8c14-691d05c3f90f" x="0" y="0" width="525" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

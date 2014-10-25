@@ -1,0 +1,220 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.videoup.views.modctgpre;
+
+import com.videoup.controllers.Controller;
+import com.videoup.views.utils.ViewLista;
+import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+import java.text.NumberFormat;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Pedro
+ */
+public class Lista extends ViewLista{
+
+    /**
+     * Creates new form Lista
+     */
+    public Lista(Controller ctrl) {
+        super(ctrl);
+        initComponents();
+        buildTableModel();
+        delQry="delete from videoup_ctprrentas WHERE;";
+        idn="idcpr";
+        mainQry="select idcpr,namec,costou,unidad_nm,uns_base,cstu_xtra from videoup_ctprrentas vc";
+        countQry="select count(*) From videoup_ctprrentas";
+        reloadTable(0);
+        pnlFilter.setVisible(false);
+        pnlNorth.add(pnlFilter,BorderLayout.CENTER);
+        showBtnPrint(false);
+    }
+
+    @Override
+    protected void showList(String query,int pag){
+        List<Object[]> lista;
+        NumberFormat frmCurr=NumberFormat.getCurrencyInstance();
+        DefaultTableModel tmodel=((DefaultTableModel)tabla.getModel());
+        Object[] rowArray;
+        lista=loadListUseSQL(query+whr+orderby,countQry,pag,true);
+        if(lista==null){
+            ctrl.showDialogErr("Error al cargar la lista: "+error);
+            return;
+        }
+        for(int itr=tmodel.getRowCount();itr>0;itr--){
+            tmodel.removeRow(itr-1);
+        }
+        for(Object[] row: lista){
+            rowArray=new Object[5];
+            rowArray[0]=new cellKey(row[0],row[1]);
+            rowArray[1]=frmCurr.format(row[2]);
+            rowArray[2]=row[3];
+            rowArray[3]=row[4];
+            rowArray[4]=frmCurr.format(row[5]);
+            tmodel.addRow(rowArray);
+        }
+        tabla.setModel(tmodel);
+    }
+    
+    @Override
+    protected void buildTableModel(){
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
+            new String [] {"Catalogo", "Costo unitario","Unidad","Unidad base","Costo unidad extra"}
+        ){
+            boolean[] canEdit = new boolean [] {false, false, false, false, false};
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {return canEdit [columnIndex];}
+        });
+        tabla.setColumnSelectionAllowed(false);
+        tabla.getTableHeader().setReorderingAllowed(false);
+        tabla.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(190);
+        tabla.getColumnModel().getColumn(1).setPreferredWidth(190);
+        tabla.getColumnModel().getColumn(2).setPreferredWidth(190);
+        tabla.getColumnModel().getColumn(3).setPreferredWidth(190);
+        tabla.getColumnModel().getColumn(4).setPreferredWidth(190);
+    }
+    
+    @Override
+    protected void loadRecord(cellKey ckey){
+        ctrl.loadFicha(ckey.getKey());
+    }
+    
+    @Override
+    protected int deleteSelectedRecords(){
+        int[] sels2=tabla.getSelectedRows();
+        cellKey cell;
+        int cnt2;
+        int selIdxModel2;
+        DefaultTableModel tmodel2=((DefaultTableModel)tabla.getModel());
+        for(cnt2=0;cnt2<sels2.length;cnt2++){
+            selIdxModel2=tabla.convertRowIndexToModel(sels2[cnt2]);
+            cell=((cellKey)tmodel2.getValueAt(selIdxModel2,0));
+            if(cell.getKey()==5){
+                error="No se puede eliminar el catalogo Estrenos";
+                return -1;
+            }
+            if(cell.getKey()==1){
+                error="No se puede eliminar el catalogo Normal";
+                return -1;
+            }
+        }
+        return super.deleteSelectedRecords();
+    }
+    
+    @Override
+    protected void showFilter(){
+        pnlFilter.setVisible(!pnlFilter.isVisible());
+    }
+    
+    @Override
+    protected void applyFilter(){
+        String nom=txfNom.getText().trim();
+        whr="";
+        if(nom.length()>0){
+            whr=" where "+buildLike4Where(nom,"namec");
+        }
+        countQry="select count(*) From videoup_ctprrentas"+whr;
+        reloadTable(0);
+    }
+
+    @Override
+    protected void orderByColumn(int col, String ort){
+        orderby=" order by ";
+        if(col==0){
+            orderby+=" namec "+ort;
+        }else if(col==1){
+            orderby+=" costou "+ort;
+        }else if(col==2){
+            orderby+=" unidad_nm "+ort;
+        }else if(col==3){
+            orderby+=" uns_base "+ort;
+        }else if(col==4){
+            orderby+=" cstu_xtra "+ort;
+        }else{
+            orderby+="";
+        }
+        reloadTable(currPage);
+    }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        pnlFilter = new javax.swing.JPanel();
+        btnFilter = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txfNom = new javax.swing.JTextField();
+
+        pnlFilter.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        btnFilter.setText("Filtrar");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre:");
+
+        txfNom.setColumns(13);
+        txfNom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfNomKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlFilterLayout = new javax.swing.GroupLayout(pnlFilter);
+        pnlFilter.setLayout(pnlFilterLayout);
+        pnlFilterLayout.setHorizontalGroup(
+            pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFilterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txfNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(btnFilter)
+                .addContainerGap())
+        );
+        pnlFilterLayout.setVerticalGroup(
+            pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFilterLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFilter)
+                    .addComponent(jLabel1)
+                    .addComponent(txfNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        setLayout(new java.awt.BorderLayout());
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        applyFilter();
+    }//GEN-LAST:event_btnFilterActionPerformed
+
+    private void txfNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNomKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            applyFilter();
+        }
+    }//GEN-LAST:event_txfNomKeyPressed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFilter;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel pnlFilter;
+    private javax.swing.JTextField txfNom;
+    // End of variables declaration//GEN-END:variables
+}

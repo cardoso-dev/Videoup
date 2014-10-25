@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cvImage" pageWidth="612" pageHeight="792" columnWidth="534" leftMargin="39" rightMargin="39" topMargin="42" bottomMargin="51" uuid="e304aa38-0d35-4aa5-b659-3ae4ecc69aba">
+	<property name="ireport.zoom" value="0.8467108950806659"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="42"/>
+	<parameter name="image" class="java.io.InputStream"/>
+	<detail>
+		<band height="699" splitType="Stretch">
+			<image scaleImage="RetainShape">
+				<reportElement uuid="83aff47b-1715-4dd3-9aed-ee760e4a41e7" stretchType="RelativeToTallestObject" x="0" y="0" width="534" height="699"/>
+				<imageExpression><![CDATA[$P{image}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
